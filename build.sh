@@ -77,6 +77,7 @@ else
 			FIP_NAME="${FIP_NAME}-multi-layout"
 		fi
 		cp -f $ATF_DIR/build/${SOC}/release/fip.bin output/${FIP_NAME}.bin
+		cp -f $ATF_DIR/build/${SOC}/release/bl2.img output/${SOC}-${BOARD}-bl2.img
 		echo "$FIP_NAME build done"
 	else
 		echo "fip build fail!"

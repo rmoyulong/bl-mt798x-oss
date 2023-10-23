@@ -112,7 +112,7 @@ TARGET_ARGS += bl2
 endif
 
 ifeq ($(CONFIG_NEED_FIP),y)
-TARGET_ARGS += bl31 fip
+TARGET_ARGS += all fip
 else
 ifeq ($(CONFIG_NEED_BL31),y)
 TARGET_ARGS += bl31
