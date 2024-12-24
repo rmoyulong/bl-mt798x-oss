@@ -1,0 +1,43 @@
+{
+	"u-boot-env": {
+		"start": 8192,
+		"end": 9215,
+		"uuid": "{47824673-dc86-11ee-89b7-be4b53ad2725}",
+		"size": "512 KiB -> 0.5 MiB"
+	},
+
+	"factory": {
+		"start": 9216,
+		"end": 13311,
+		"uuid": "{4783d1b8-dc86-11ee-8250-be4b53ad2725}",
+		"size": "2048 KiB -> 2 MiB"
+	},
+
+	"fip": {
+		"start": 13312,
+		"end": 21503,
+		"uuid": "{4783d821-dc86-11ee-8006-be4b53ad2725}",
+		"size": "4096 KiB -> 4 MiB"
+	},
+
+	"config": {
+		"start": 21504,
+		"end": 29695,
+		"uuid": "{4783dea8-dc86-11ee-a7d7-be4b53ad2725}",
+		"size": "4096 KiB -> 4 MiB"
+	},
+
+	"kernel": {
+		"start": 29696,
+		"end": 62463,
+		"uuid": "{4783e47a-dc86-11ee-8cfa-be4b53ad2725}",
+		"size": "16384 KiB -> 16 MiB"
+	},
+
+	"rootfs": {
+		"start": 62464,
+		"end": 4256767,
+		"uuid": "{4783ea80-dc86-11ee-95ed-be4b53ad2725}",
+		"size": "2097152 KiB -> 2048 MiB"
+	}
+}
