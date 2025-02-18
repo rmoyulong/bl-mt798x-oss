@@ -62,7 +62,6 @@ make -C "$UBOOT_DIR" olddefconfig
 make -C "$UBOOT_DIR" clean
 make -C "$UBOOT_DIR" -j $(nproc) all
 if [ -f "$UBOOT_DIR/u-boot.bin" ]; then
-	cp -f "$UBOOT_DIR/u-boot.bin" "$ATF_DIR/u-boot.bin"
 	echo "u-boot build done!"
 else
 	echo "u-boot build fail!"
@@ -75,13 +74,13 @@ if [ -e "$ATF_DIR/makefile" ]; then
 else
 	ATF_MKFILE="Makefile"
 fi
-make -C "$ATF_DIR" -f "$ATF_MKFILE" clean CONFIG_CROSS_COMPILER="${TOOLCHAIN}"
+make -C "$ATF_DIR" -f "$ATF_MKFILE" clean CONFIG_CROSS_COMPILER="$TOOLCHAIN"
 rm -rf "$ATF_DIR/build"
-make -C "$ATF_DIR" -f "$ATF_MKFILE" "$ATF_CFG" CONFIG_CROSS_COMPILER="${TOOLCHAIN}"
-make -C "$ATF_DIR" -f "$ATF_MKFILE" all CONFIG_CROSS_COMPILER="${TOOLCHAIN}" -j $(nproc)
+make -C "$ATF_DIR" -f "$ATF_MKFILE" "$ATF_CFG" CONFIG_CROSS_COMPILER="$TOOLCHAIN"
+make -C "$ATF_DIR" -f "$ATF_MKFILE" all CONFIG_CROSS_COMPILER="$TOOLCHAIN" BL33="../$UBOOT_DIR/u-boot.bin" -j $(nproc)
 
 mkdir -p "output"
-if [ -f "$ATF_DIR/build/${SOC}/release/fip.bin" ]; then
+if [ -f "$ATF_DIR/build/$SOC/release/fip.bin" ]; then
 	FIP_NAME="${SOC}_${BOARD}-fip"
 	if [ "$fixedparts" = "1" ]; then
 		FIP_NAME="${FIP_NAME}-fixed-parts"
@@ -89,7 +88,7 @@ if [ -f "$ATF_DIR/build/${SOC}/release/fip.bin" ]; then
 	if [ "$multilayout" = "1" ]; then
 		FIP_NAME="${FIP_NAME}-multi-layout"
 	fi
-	cp -f "$ATF_DIR/build/${SOC}/release/fip.bin" "output/${FIP_NAME}.bin"
+	cp -f "$ATF_DIR/build/$SOC/release/fip.bin" "output/$FIP_NAME.bin"
 	echo "$FIP_NAME build done"
 else
 	echo "fip build fail!"
